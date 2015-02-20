@@ -1,0 +1,36 @@
+# All the various editor generated files we don't want in here
+.DS_Store
+.idea
+.ropeproject*
+.settings
+.vagrant
+
+
+*.egg-info/
+*.iml
+*.project
+*.pyc
+*.pydevproject
+*.swp
+*.deb
+*~
+*#
+
+node_modules/
+pylama.ini
+
+# Project build output
+backend/kegstarter/static/build/
+backend/collected_static/
+backend/docs/_build/
+frontend/build/
+db.sqlite3
+
+# Test output files / cache
+.cache/
+.coverage
+.coverage.*
+.tox
+coverage.xml
+junit*.xml
+frontend/tests/unit/coverage
