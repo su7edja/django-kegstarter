@@ -52,7 +52,7 @@ class Poll(models.Model):
     votes = models.ManyToManyField(User, through='Vote')
 
     def __str__(self):
-        return '{}: {}'.format(self.creation_date)
+        return '{}'.format(self.creation_date)
 
 
 class Rating(models.Model):
