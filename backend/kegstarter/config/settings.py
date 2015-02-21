@@ -34,7 +34,8 @@ class Common(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        'kegledger'
+        'kegledger',
+        'kegmanager',
     )
 
     THIRDPARTY_APPS = ()
