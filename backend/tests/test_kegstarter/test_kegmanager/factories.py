@@ -1,22 +1,7 @@
 import decimal
 
 import factory
-
-
-class BrewerFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = 'kegmanager.Brewer'
-
-    name = 'Stone'
-
-
-class BeerFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = 'kegmanager.Beer'
-
-    brewer = factory.SubFactory(BrewerFactory)
-    name = 'IPA'
-    abv = decimal.Decimal('8.00')
+from factory import fuzzy
 
 
 class TapFactory(factory.django.DjangoModelFactory):
@@ -26,7 +11,23 @@ class TapFactory(factory.django.DjangoModelFactory):
     location = 'Kegerator in the back room. Left handle.'
 
 
-class KegFactory(factory.django.DjangoModelFactory):
+class BrewerFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = 'kegmanager.Brewer'
+
+    name = fuzzy.FuzzyText()
+
+
+class BeerFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = 'kegmanager.Beer'
+
+    brewer = factory.SubFactory(BrewerFactory)
+    name = fuzzy.FuzzyText()
+    abv = fuzzy.FuzzyDecimal(low=1, high=100)
+
+
+class KegFactory(factory.DjangoModelFactory):
     class Meta:
         model = 'kegmanager.Keg'
 

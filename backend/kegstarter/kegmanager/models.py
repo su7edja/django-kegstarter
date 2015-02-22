@@ -40,6 +40,9 @@ class Beer(models.Model):
     name = models.CharField(max_length=1024)  # Might not be supported on all DBs?
     abv = models.DecimalField(max_digits=5, decimal_places=2, help_text="Alcohol by Volume (in percent)")
 
+    def __str__(self):
+        return "{} - {}".format(self.brewer, self.name)
+
 
 class Keg(models.Model):
     """
@@ -65,4 +68,4 @@ class Keg(models.Model):
 
     def __str__(self):
         return '{}: {} gallons of {}'.format(self.purchase_date, self.gallons,
-                                             self.beer.name)
+                                             self.beer)
