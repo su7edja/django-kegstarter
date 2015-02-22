@@ -29,13 +29,15 @@ class Common(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
-        'kegstarter.kegledger',
-        'kegstarter.kegmanager',
     )
 
     THIRDPARTY_APPS = ()
 
-    OUR_APPS = ()
+    OUR_APPS = (
+        'kegstarter.kegledger',
+        'kegstarter.kegmanager',
+        'kegstarter.votingbooth',
+    )
 
     INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + OUR_APPS
 
