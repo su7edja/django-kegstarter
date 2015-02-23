@@ -15,17 +15,12 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 class Common(Configuration):
     SECRET_KEY = 'Immareallybadideatocheckintogithub,maybeyoushouldchangethis'
     DEBUG = True
     TEMPLATE_DEBUG = True
 
     ALLOWED_HOSTS = []
-
-
-    # Application definition
 
     DJANGO_APPS = (
         'django.contrib.admin',
@@ -38,7 +33,11 @@ class Common(Configuration):
 
     THIRDPARTY_APPS = ()
 
-    OUR_APPS = ()
+    OUR_APPS = (
+        'kegstarter.kegledger',
+        'kegstarter.kegmanager',
+        'kegstarter.votingbooth',
+    )
 
     INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + OUR_APPS
 
@@ -55,7 +54,6 @@ class Common(Configuration):
     ROOT_URLCONF = 'kegstarter.config.urls'
 
     WSGI_APPLICATION = 'kegstarter.wsgi.application'
-
 
     # Database
     # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -79,7 +77,6 @@ class Common(Configuration):
     USE_L10N = True
 
     USE_TZ = True
-
 
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/1.7/howto/static-files/
