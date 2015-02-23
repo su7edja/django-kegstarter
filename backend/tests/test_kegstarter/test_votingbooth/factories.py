@@ -2,6 +2,8 @@ import factory
 
 from ..django_factories import UserFactory
 
+from ..test_kegmanager.factories import KegFactory
+
 
 class PollFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -19,11 +21,6 @@ class VoteFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = 'votingbooth.Vote'
 
+    keg = factory.SubFactory(KegFactory)
     poll = factory.SubFactory(PollFactory)
     user = factory.SubFactory(UserFactory)
-
-    @factory.post_generation
-    def kegs(self, create, extracted, **kwargs):
-        if extracted:
-            for keg in extracted:
-                self.kegs.add(keg)

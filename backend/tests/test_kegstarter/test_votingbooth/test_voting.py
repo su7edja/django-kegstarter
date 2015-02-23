@@ -3,8 +3,8 @@ from datetime import datetime
 from django.core.exceptions import ValidationError
 import pytest
 
-from ...factories.kegmanager.manager_factories import KegFactory
-from ...factories.votingbooth.voting_factories import PollFactory, VoteFactory
+from ..test_kegmanager.factories import KegFactory
+from .factories import PollFactory, VoteFactory
 
 
 @pytest.mark.django_db
