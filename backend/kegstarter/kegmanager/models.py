@@ -65,4 +65,4 @@ class Keg(models.Model):
 
     def __str__(self):
         return '{}: {} gallons of {}'.format(self.purchase_date, self.gallons,
-                                             self.beverage_name)
+                                             self.beer.name)
