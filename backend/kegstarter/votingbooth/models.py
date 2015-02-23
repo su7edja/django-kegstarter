@@ -25,7 +25,13 @@ class Poll(models.Model):
         help_text="Kegs in this poll someone is willing to go and pick up.")
 
     def closed(self):
-        """The poll is closed once any of kegs available has been purchased"""
+        """
+        The poll is closed once any of kegs available has been purchased.
+
+        We close a poll when even one keg is purchased, regardless of how many keg votes are allowed per user, to
+        avoid creating a voting strategy of waiting for one of several kegs to be purchased so you can stack your votes
+        on remaining kegs and reduce the odds of a keg you don't like being bought.
+        """
 
         # This is a semi-sneaky way of saying "Get the first instance"
         return next((True for keg in self.kegs_available
