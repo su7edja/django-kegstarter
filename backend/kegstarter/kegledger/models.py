@@ -34,7 +34,7 @@ class LedgerEntry(models.Model):
             raise ValidationError('Only enter a guest name for users who are not registered.')
 
     def save(self, *args, **kwargs):
-        self.clean()
+        self.full_clean()
         super(LedgerEntry, self).save(*args, **kwargs)
 
     def __str__(self):
