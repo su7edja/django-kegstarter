@@ -62,7 +62,7 @@ class Vote(models.Model):
     class Meta:
         unique_together = (('keg', 'user'),)
 
-    def clean_keg(self):
+    def clean(self):
         if self.keg.purchase_date is not None:
             raise ValidationError('Keg "{}" has been purchased.'.format(self.keg))
 
