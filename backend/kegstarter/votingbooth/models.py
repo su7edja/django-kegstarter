@@ -34,8 +34,7 @@ class Poll(models.Model):
         """
 
         # This is a semi-sneaky way of saying "Get the first instance"
-        return next((True for keg in self.kegs_available
-                    if keg.purchase_date is not None), False)
+        return next((True for keg in self.kegs_available.all() if keg.purchase_date is not None), False)
 
     def __str__(self):
         return '{}'.format(self.creation_date)
