@@ -82,6 +82,7 @@ class Common(Configuration):
     # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
     STATIC_URL = '/static/'
+    STATIC_ROOT = values.Value(os.path.abspath(os.path.join(BASE_DIR, '..', 'collected_static', '')))
 
 
 class Local(Common):
