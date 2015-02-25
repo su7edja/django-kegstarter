@@ -36,4 +36,3 @@ class KegFactory(factory.DjangoModelFactory):
     price = decimal.Decimal('29.50')
     purchase_date = None
     tap = factory.SubFactory(TapFactory)
-    vendor_name = 'Stone Brewing'

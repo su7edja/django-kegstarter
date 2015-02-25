@@ -64,7 +64,6 @@ class Keg(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2, help_text="Before tax")
     purchase_date = models.DateField(blank=True, null=True)
     tap = models.ForeignKey(Tap)
-    vendor_name = models.CharField(max_length=200)
 
     def __str__(self):
         return '{}: {} gallons of {}'.format(self.purchase_date, self.gallons,
