@@ -70,12 +70,14 @@ class Vote(models.Model):
         unique_together = (('keg', 'user'),)
 
     def clean(self):
-        """
-        Validation of when to close voting a poll should be done in the poll (if we check the purchase date on the keg
-        in the vote, users could still vote on closed polls as long as they pick a keg that wasn't purchased).
-        """
+
+        # Validation of when to close voting a poll should be done in the poll (if we check the purchase date on the keg
+        # in the vote, users could still vote on closed polls as long as they pick a keg that wasn't purchased).
         if self.poll.closed:
             raise ValidationError('Voting is closed on poll {}.'.format(self.poll.creation_date))
+
+        if self.keg not in self.poll.kegs_available.all():
+            raise ValidationError('{} is not in poll {}.'.format(self.keg.__str__(), self.poll.__str__()))
 
     def save(self, *args, **kwargs):
         self.full_clean()
