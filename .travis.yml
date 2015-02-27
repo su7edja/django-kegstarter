@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "3.4"
+
+install:
+  - "pip install -e .[testing]"
+  - "pip install coveralls"
+
+script:
+  py.test --cov ./backend/kegstarter --cov-config .django.coveragerc --cov-report term-missing
+
+after_success:
+  coveralls
