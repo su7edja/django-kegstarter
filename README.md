@@ -1,7 +1,7 @@
 Kegstarter - For enlightened offices
 ====================================
 
-![Build status](https://api.travis-ci.org/z4r/python-coveralls.png?branch=master) ![Coverage Status](https://coveralls.io/repos/paulcollinsiii/django-kegstarter/badge.svg)](https://coveralls.io/r/paulcollinsiii/django-kegstarter)
+![Build status](https://api.travis-ci.org/z4r/python-coveralls.png?branch=master) [![Coverage Status](https://coveralls.io/repos/paulcollinsiii/django-kegstarter/badge.svg?branch=travis)](https://coveralls.io/r/paulcollinsiii/django-kegstarter?branch=travis)
 
 This project grew out of a "need" to track the office Kegerator in a
 slightly better way. The goal is to have something simple, but still
