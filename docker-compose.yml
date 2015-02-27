@@ -1,0 +1,17 @@
+db:
+  image: postgres:9.4
+  environment:
+    - POSTGRES_USER=datanav
+    - POSTGRES_PASSWORD=datanav
+  ports:
+    - "5432"
+
+web:
+  build: .
+  ports:
+    - "8000:8000"
+  volumes:
+    - .:/code
+  command: manage.py runserver 0.0.0.0:8000
+  links:
+    - db
