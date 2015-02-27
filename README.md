@@ -1,6 +1,8 @@
 Kegstarter - For enlightened offices
 ====================================
 
+![Build status](https://api.travis-ci.org/z4r/python-coveralls.png?branch=master)
+
 This project grew out of a "need" to track the office Kegerator in a
 slightly better way. The goal is to have something simple, but still
 have it be a good learning project for people starting out in Django /
