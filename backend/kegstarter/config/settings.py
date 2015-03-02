@@ -86,7 +86,7 @@ class Common(Configuration):
 
 
 class Local(Common):
-    pass
+    DATABASES = values.DatabaseURLValue('postgres://kegstarter:kegstarter@localhost:15432/kegstarter')
 
 
 class Testing(Common):

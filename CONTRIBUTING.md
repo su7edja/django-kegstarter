@@ -26,9 +26,12 @@ that the code works as intended and any data validation logic is robust.
 
 Getting Setup
 =============
-TO BE WRITTEN
-Currently exploring docker things, but initially
+* [boot2docker](http://boot2docker.io/)
+* [docker-compose](http://docs.docker.com/compose/install/)
 
-* Python 3.4
-* ``virtualenv-wrapper`` and in a venv that's set to use Python 3.4
-* ``pip install -e .\[dev\]``
+`docker-compose up` should start both a postgres server and a django
+server (via `manage.py runserver 0.0.0.0:8000`)
+A `boot2docker ip` will tell you what to connect to.
+
+Note this does not do any `manage.py migrate` or `manage.py syncdb`
+runs, so you'll need to do that via `docker-compose run web [COMMAND]`
