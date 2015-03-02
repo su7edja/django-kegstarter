@@ -5,7 +5,7 @@ requirements = [
     'Django==1.7.4',
     'django-configurations==0.8',
     'dj-database-url==0.3.0',
-    'djangorestframework',
+    'djangorestframework==3.0.5',
 ]
 
 
