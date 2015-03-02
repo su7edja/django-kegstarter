@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 requirements = [
     'Django==1.7.4',
     'django-configurations==0.8',
-    'djangorestframework',
+    'djangorestframework==3.0.5',
 ]
 
 
