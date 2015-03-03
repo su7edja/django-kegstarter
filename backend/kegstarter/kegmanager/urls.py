@@ -1,9 +1,8 @@
-from rest_framework import routers
+from django.conf.urls import patterns, url, include
 
-from . import views
+from .api import API_ROUTER
 
 
-router = routers.SimpleRouter()
-router.register(r'beers', views.BeerViewSet)
-router.register(r'brewers', views.BrewerViewSet)
-urlpatterns = router.urls
+urlpatterns = patterns('',
+    url(r'^api/', include(API_ROUTER.urls)),
+)
