@@ -1,8 +1,8 @@
 db:
   image: postgres:9.4
   environment:
-    - POSTGRES_USER=datanav
-    - POSTGRES_PASSWORD=datanav
+    - POSTGRES_USER=kegstarter
+    - POSTGRES_PASSWORD=kegstarter
   ports:
     - "5432"
 
