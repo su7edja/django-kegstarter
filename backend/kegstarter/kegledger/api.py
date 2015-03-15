@@ -2,7 +2,7 @@ from rest_framework import viewsets, routers
 
 from .models import Ledger, LedgerEntry
 from . import serializers
-from .permissions import IsOwnerOrReadOnly
+from ..utils.permissions import IsOwnerOrReadOnly
 
 API_ROUTER = routers.DefaultRouter()
 

@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^kegledger/', include('kegstarter.kegledger.urls')),
     url(r'^kegmanager/', include('kegstarter.kegmanager.urls')),
+    url(r'^votingbooth/', include('kegstarter.votingbooth.urls')),
 )

@@ -2,8 +2,10 @@ from rest_framework import viewsets, routers
 from rest_framework.permissions import SAFE_METHODS, IsAdminUser
 
 from .models import Poll, Rating, Vote
-from .permissions import PollIsOpen, IsSelfOrReadOnly
+from .permissions import PollIsOpen
 from . import serializers
+from ..utils.permissions import IsOwnerOrReadOnly
+
 
 API_ROUTER = routers.DefaultRouter()
 
@@ -33,7 +35,7 @@ class RatingViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         # Only self can change own rating
         if self.request.method not in SAFE_METHODS:
-            self.permission_classes = [IsSelfOrReadOnly]
+            self.permission_classes = [IsOwnerOrReadOnly]
 
         return super(RatingViewSet, self).get_permissions()
 
@@ -47,7 +49,7 @@ class VoteViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         # Only self can change own vote and poll must still be open
         if self.request.method not in SAFE_METHODS:
-            self.permission_classes = [PollIsOpen, IsSelfOrReadOnly]
+            self.permission_classes = [PollIsOpen, IsOwnerOrReadOnly]
 
         return super(VoteViewSet, self).get_permissions()
 
