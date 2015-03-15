@@ -31,7 +31,9 @@ class Common(Configuration):
         'django.contrib.staticfiles',
     )
 
-    THIRDPARTY_APPS = ()
+    THIRDPARTY_APPS = (
+        'rest_framework',
+    )
 
     OUR_APPS = (
         'kegstarter.kegledger',
@@ -84,9 +86,13 @@ class Common(Configuration):
     STATIC_URL = '/static/'
     STATIC_ROOT = values.Value(os.path.abspath(os.path.join(BASE_DIR, '..', 'collected_static', '')))
 
+    TEMPLATE_DIRS = (
+        os.path.join(BASE_DIR, 'templates'),
+    )
+
 
 class Local(Common):
-    DATABASES = values.DatabaseURLValue('postgres://kegstarter:kegstarter@localhost:15432/kegstarter')
+    DATABASES = values.DatabaseURLValue('postgres://kegstarter:kegstarter@db:5432/kegstarter')
 
 
 class Testing(Common):

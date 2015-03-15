@@ -29,9 +29,15 @@ Getting Setup
 * [boot2docker](http://boot2docker.io/)
 * [docker-compose](http://docs.docker.com/compose/install/)
 
-`docker-compose up` should start both a postgres server and a django
+Getting a running local server should be pretty easy at this point
+* `docker-compose up` should start both a postgres server and a django
 server (via `manage.py runserver 0.0.0.0:8000`)
-A `boot2docker ip` will tell you what to connect to.
+* `docker-compose run web manage.py syncdb` will get your DB setup
+* `boot2docker ip` will tell you what to connect to. (probably something
+  like 192.168.59.103 or .104)
+* In a brower go to that IP with :8000 (just like you would for a
+  manage.py runserver if you ran it on your localhost) and you should
+  see the site!
 
 Note this does not do any `manage.py migrate` or `manage.py syncdb`
 runs, so you'll need to do that via `docker-compose run web [COMMAND]`

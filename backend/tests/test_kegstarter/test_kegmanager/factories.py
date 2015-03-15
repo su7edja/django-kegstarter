@@ -1,7 +1,8 @@
 import decimal
-
 import factory
 from factory import fuzzy
+
+from ..test_kegledger import factories as ledger_factory
 
 
 class TapFactory(factory.django.DjangoModelFactory):
@@ -33,6 +34,6 @@ class KegFactory(factory.DjangoModelFactory):
 
     beer = factory.SubFactory(BeerFactory)
     gallons = decimal.Decimal('10.11')
-    price = decimal.Decimal('29.50')
+    ledger_entry = factory.SubFactory(ledger_factory.LedgerEntryFactoryRegistered)
     purchase_date = None
     tap = factory.SubFactory(TapFactory)

@@ -6,6 +6,7 @@ requirements = [
     'django-configurations==0.8',
     'dj-database-url==0.3.0',
     'djangorestframework==3.0.5',
+    'psycopg2==2.6',
 ]
 
 
