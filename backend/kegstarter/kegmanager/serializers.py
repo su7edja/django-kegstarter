@@ -9,8 +9,6 @@ class TapSerializer(serializers.ModelSerializer):
 
 
 class BeerSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='beers') #assuming that the url would be /api/beers/{pk}/
-
     class Meta:
         model = models.Beer
         fields = ('url', 'id', 'name', 'brewer', 'abv')
