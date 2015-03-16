@@ -85,6 +85,9 @@ class Common(Configuration):
 
     STATIC_URL = '/static/'
     STATIC_ROOT = values.Value(os.path.abspath(os.path.join(BASE_DIR, '..', 'collected_static', '')))
+    STATICFILES_DIRS = (
+        os.path.abspath(os.path.join(BASE_DIR, 'static')),
+    )
 
     TEMPLATE_DIRS = (
         os.path.join(BASE_DIR, 'templates'),
@@ -92,6 +95,10 @@ class Common(Configuration):
 
 
 class Local(Common):
+    DJANGO_APPS = Common.DJANGO_APPS + ('django.contrib.webdesign',)
+
+    INSTALLED_APPS = DJANGO_APPS + Common.THIRDPARTY_APPS + Common.OUR_APPS
+
     DATABASES = values.DatabaseURLValue('postgres://kegstarter:kegstarter@db:5432/kegstarter')
 
 

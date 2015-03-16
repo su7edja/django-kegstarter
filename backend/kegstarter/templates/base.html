@@ -1,4 +1,32 @@
-<html>
+{% load staticfiles %}
+{% load webdesign %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Kegstarter</title>
+
+  <link href="{% static "build/css/kegstarter.bootstrap.css" %}" rel="stylesheet">
+</head>
 <body>
+  <div class="page-header">
+    <!-- <div ng-controller="datanav.login" class="text-muted pull-right">
+    </div>-->
+    <h3>Kegstarter</h3>
+    <login></login>
+  </div>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid" ui-view>
+    {% lorem 15 p %}
+  </div>
+
+
+  <script type="text/javascript" src="{% static "build/vendor.js" %}"></script>
 </body>
 </html>

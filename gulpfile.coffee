@@ -77,7 +77,7 @@ gulp.task('minifyBower', ['bower'], ->
 
 # Compile our custom less
 gulp.task('less', ['bower'], ->
-  gulp.src(CONFIG.lessCssSrc + '/brightscope.bootstrap.less')
+  gulp.src(CONFIG.lessCssSrc + '/kegstarter.bootstrap.less')
     .pipe(g.sourcemaps.init())
     .pipe(g.less())
     .pipe(g.sourcemaps.write('./'))
