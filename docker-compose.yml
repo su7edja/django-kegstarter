@@ -3,15 +3,25 @@ db:
   environment:
     - POSTGRES_USER=kegstarter
     - POSTGRES_PASSWORD=kegstarter
-  ports:
+  expose:
     - "5432"
 
-web:
-  build: .
+backend:
+  build: backend
+  command: manage.py runserver 0.0.0.0:8000
   ports:
     - "8000:8000"
   volumes:
-    - .:/code
-  command: manage.py runserver 0.0.0.0:8000
+    - ./backend:/opt/backend
   links:
     - db
+
+frontend:
+  build: frontend
+  command: ember serve
+  ports:
+    - "8080:8080"
+  volumes:
+    - .:/code
+  links:
+    - backend

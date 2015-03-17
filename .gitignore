@@ -27,10 +27,10 @@ frontend/build/
 db.sqlite3
 
 # Test output files / cache
-.cache/
-.coverage
-.coverage.*
-.tox
-coverage.xml
-junit*.xml
-frontend/tests/unit/coverage
+backend/.cache/
+backend/.coverage
+backend/.coverage.*
+backend/.tox
+backend/coverage.xml
+backend/junit*.xml
+frontend/.cache/
