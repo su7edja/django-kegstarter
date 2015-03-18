@@ -99,6 +99,10 @@ class Testing(Common):
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'  # Aka fake storage... sorta
     MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'tests', 'statics'))  # Store test tmp files here
 
+    REST_FRAMEWORK = {
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+    }
+
 
 class Prod(Common):
     DEBUG = False
