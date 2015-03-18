@@ -55,8 +55,10 @@ class Rating(models.Model):
     ]
     keg = models.ForeignKey(keg_models.Keg)
     stars = models.IntegerField(choices=STARS)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, unique=True,
-                             help_text="One user, one rating per keg")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, help_text="One user, one rating per keg")
+
+    class Meta:
+        unique_together = ('keg', 'user')
 
 
 class Vote(models.Model):
