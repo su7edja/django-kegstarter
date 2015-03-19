@@ -69,12 +69,12 @@ class Vote(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     class Meta:
-        unique_together = (('keg', 'user'),)
+        unique_together = (('keg', 'poll', 'user'),)
 
     def clean(self):
 
-        # Validation of when to close voting a poll should be done in the poll (if we check the purchase date on the keg
-        # in the vote, users could still vote on closed polls as long as they pick a keg that wasn't purchased).
+        # Validation of when to close voting a poll should be done in the poll (if we check the purchase date on the keg)
+        # in the vote, users cannot vote on closed polls.
         if self.poll.closed:
             raise ValidationError('Voting is closed on poll {}.'.format(self.poll.creation_date))
 
