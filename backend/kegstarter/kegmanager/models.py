@@ -61,7 +61,9 @@ class Keg(models.Model):
     # unit of measurement to make it easier to write a migration when
     # django-measurements gets updated.
     gallons = models.DecimalField(max_digits=4, decimal_places=2)
-    price = models.DecimalField(max_digits=5, decimal_places=2, help_text="Before tax")
+    ledger_entry = models.ForeignKey('kegledger.LedgerEntry', blank=False, null=False,
+        help_text="You bought it, there better be a trackable transaction "
+            "associated with it. Don't include the keg deposit")
     purchase_date = models.DateField(blank=True, null=True)
     tap = models.ForeignKey(Tap)
 
