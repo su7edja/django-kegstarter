@@ -1,4 +1,5 @@
 from rest_framework import viewsets, routers
+from rest_framework.permissions import AllowAny
 
 from .models import Ledger, LedgerEntry
 from . import serializers
@@ -17,5 +18,5 @@ API_ROUTER.register(r'ledgers', LedgerViewSet)
 class LedgerEntryViewSet(viewsets.ModelViewSet):
     queryset = LedgerEntry.objects.all()
     serializer_class = serializers.LedgerEntrySerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [AllowAny]#IsOwnerOrReadOnly]
 API_ROUTER.register(r'entries', LedgerEntryViewSet)
