@@ -4,11 +4,12 @@ python:
   - "3.4"
 
 install:
+  - "cd backend"
   - "pip install -e .[testing]"
   - "pip install coveralls"
 
 script:
-  py.test --cov ./backend/kegstarter --cov-config .django.coveragerc --cov-report term-missing
+  py.test --cov kegstarter --cov-config .django.coveragerc --cov-report term-missing
 
 after_success:
   coveralls

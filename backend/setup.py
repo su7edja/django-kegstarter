@@ -1,4 +1,28 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Command
+from distutils import log
+
+
+class ListDeps(Command):
+    user_options = [
+        ('extras=', 'e', 'Extra requirements to list'),
+    ]
+
+    def initialize_options(self):
+        self.extras = None
+
+    def finalize_options(self):
+        extras = ()
+        if self.extras is not None:
+            extras = self.extras.lstrip('=').split(',')
+        requirements = self.distribution.install_requires[:]
+        requirements.extend(req
+            for key in extras
+            for req in self.distribution.extras_require[key]
+        )
+        self.announce(' '.join(requirements), log.INFO)
+
+    def run(self):
+        return
 
 
 requirements = [
@@ -44,10 +68,10 @@ setup(name='django-kegstarter',
           'prod': production_requirements,
           'testing': testing_requirements,
       },
-      scripts=['backend/kegstarter/manage.py'],
-      package_dir={'': 'backend'},
-      packages=find_packages(where='backend', exclude=('tests*',)),
+      scripts=['kegstarter/manage.py'],
+      packages=find_packages(where='.', exclude=('tests*',)),
       include_package_data=True,
+      cmdclass={'list_deps': ListDeps},
       classifiers=[
           'Development Status :: 3 - Alpha',
           'Environment :: Web Environment',
