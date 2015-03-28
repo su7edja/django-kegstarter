@@ -74,10 +74,10 @@ class Vote(models.Model):
     def clean(self):
 
         if self.poll.closed:
-            raise ValidationError('Voting is closed on poll {}.'.format(self.poll.creation_date))
+            raise ValidationError('Voting is closed on poll {}.'.format(self.poll))
 
         if self.keg not in self.poll.kegs_available.all():
-            raise ValidationError('{} is not in poll {}.'.format(self.keg.__str__(), self.poll.__str__()))
+            raise ValidationError('{} is not in poll {}.'.format(self.keg, self.poll))
 
     def save(self, *args, **kwargs):
         self.full_clean()
