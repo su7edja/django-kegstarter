@@ -1,6 +1,6 @@
 from rest_framework.permissions import BasePermission
 
 
-class PollIsOpen(BasePermission):
+class PollIsNotClosed(BasePermission):
     def has_object_permission(self, request, view, obj):
         return not obj.closed

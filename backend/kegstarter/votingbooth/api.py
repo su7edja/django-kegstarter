@@ -2,7 +2,7 @@ from rest_framework import viewsets, routers
 from rest_framework.permissions import SAFE_METHODS, IsAdminUser
 
 from .models import Poll, Rating, Vote
-from .permissions import PollIsOpen
+from .permissions import PollIsNotClosed
 from . import serializers
 from ..utils.permissions import IsOwnerOrReadOnly
 
@@ -21,7 +21,7 @@ class PollViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         # Only open polls can be edited and only admin can edit
         if self.request.method not in SAFE_METHODS:
-            self.permission_classes = [PollIsOpen, IsAdminUser]
+            self.permission_classes = [PollIsNotClosed, IsAdminUser]
 
         return super(PollViewSet, self).get_permissions()
 
@@ -49,7 +49,7 @@ class VoteViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         # Only self can change own vote and poll must still be open
         if self.request.method not in SAFE_METHODS:
-            self.permission_classes = [PollIsOpen, IsOwnerOrReadOnly]
+            self.permission_classes = [PollIsNotClosed, IsOwnerOrReadOnly]
 
         return super(VoteViewSet, self).get_permissions()
 
