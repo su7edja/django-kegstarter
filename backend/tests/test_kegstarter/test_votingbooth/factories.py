@@ -17,6 +17,15 @@ class PollFactory(factory.django.DjangoModelFactory):
             self.kegs_available.add(*extracted)
 
 
+class RatingFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = 'votingbooth.Rating'
+
+    keg = factory.SubFactory(KegFactory)
+    stars = 1
+    user = factory.SubFactory(UserFactory)
+
+
 class VoteFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = 'votingbooth.Vote'

@@ -6,4 +6,3 @@ from .api import API_ROUTER
 urlpatterns = patterns('',
     url(r'^api/', include(API_ROUTER.urls)),
 )
-

@@ -73,13 +73,11 @@ class Vote(models.Model):
 
     def clean(self):
 
-        # Validation of when to close voting a poll should be done in the poll (if we check the purchase date on the keg)
-        # in the vote, users cannot vote on closed polls.
         if self.poll.closed:
-            raise ValidationError('Voting is closed on poll {}.'.format(self.poll.creation_date))
+            raise ValidationError('Voting is closed on poll {}.'.format(self.poll))
 
         if self.keg not in self.poll.kegs_available.all():
-            raise ValidationError('{} is not in poll {}.'.format(self.keg.__str__(), self.poll.__str__()))
+            raise ValidationError('{} is not in poll {}.'.format(self.keg, self.poll))
 
     def save(self, *args, **kwargs):
         self.full_clean()

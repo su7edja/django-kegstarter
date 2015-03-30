@@ -1,6 +1,9 @@
 Kegstarter - For enlightened offices
 ====================================
 
+The build status icons reflect the [upstream repo](https://github.com/paulcollinsiii/django-kegstarter)'s status, not
+the status of forks.
+
 [![Build Status](https://travis-ci.org/paulcollinsiii/django-kegstarter.svg?branch=master)](https://travis-ci.org/paulcollinsiii/django-kegstarter) [![Coverage Status](https://coveralls.io/repos/paulcollinsiii/django-kegstarter/badge.svg?branch=master)](https://coveralls.io/r/paulcollinsiii/django-kegstarter?branch=master)
 
 This project grew out of a "need" to track the office Kegerator in a

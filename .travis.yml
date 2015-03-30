@@ -8,6 +8,9 @@ install:
   - "pip install -e .[testing]"
   - "pip install coveralls"
 
+before_script:
+  flake8 --max-line-length 120 kegstarter/
+
 script:
   py.test --cov kegstarter --cov-config .django.coveragerc --cov-report term-missing
 
