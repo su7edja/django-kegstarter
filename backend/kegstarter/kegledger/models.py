@@ -5,7 +5,7 @@ from django.db import models
 
 class Ledger(models.Model):
     name = models.CharField(max_length=200)
-    owner = models.ForeignKey(User)
+    user = models.ForeignKey(User)
 
     @property
     def total(self):

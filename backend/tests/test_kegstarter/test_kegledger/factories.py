@@ -11,7 +11,7 @@ class LedgerFactory(factory.django.DjangoModelFactory):
         model = 'kegledger.Ledger'
 
     name = 'A Testy Ledger'
-    owner = factory.SubFactory(UserFactory)
+    user = factory.SubFactory(UserFactory)
 
 
 class LedgerEntryFactoryGuest(factory.django.DjangoModelFactory):
