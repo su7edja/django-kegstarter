@@ -22,3 +22,12 @@ def test_cannot_vote_on_kegs_not_in_poll():
     poll = vote_factories.PollFactory(kegs_available=[keg_in_poll])
     with pytest.raises(ValidationError):
         vote_factories.VoteFactory(poll=poll, keg=keg_not_in_poll)
+
+
+@pytest.mark.django_db
+def test_poll_closed_once_a_keg_is_purchased():
+    keg = keg_factories.KegFactory()
+    poll = vote_factories.PollFactory(kegs_available=[keg])
+    keg.purchase_date = datetime.now()
+    keg.save()
+    assert poll.closed

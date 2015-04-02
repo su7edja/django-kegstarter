@@ -5,7 +5,6 @@ Voting, polling and ratings for kegs. Community bike-shedding!
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils import functional
 
 from kegstarter.kegmanager import models as keg_models
 
@@ -25,7 +24,7 @@ class Poll(models.Model):
     kegs_available = models.ManyToManyField(keg_models.Keg,
         help_text="Kegs in this poll someone is willing to go and pick up.")
 
-    @functional.cached_property
+    @property
     def closed(self):
         """
         The poll is closed once any of kegs available has been purchased.
