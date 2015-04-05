@@ -10,6 +10,11 @@ class TapSerializer(serializers.ModelSerializer):
 
 
 class BeerSerializer(serializers.HyperlinkedModelSerializer):
+    brewer = serializers.HyperlinkedRelatedField(
+        read_only=False,
+        queryset=models.Brewer.objects.all(),
+        view_name='brewer-detail')
+
     class Meta:
         model = models.Beer
         fields = ('url', 'pk', 'name', 'brewer', 'abv')

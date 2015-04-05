@@ -1,8 +1,9 @@
 from rest_framework import viewsets, routers
 
+from kegstarter.utils.permissions import IsOwnerOrReadOnly
 from .models import Ledger, LedgerEntry
+from .permissions import IsLedgerOwnerOrReadOnly
 from . import serializers
-from ..utils.permissions import IsOwnerOrReadOnly
 
 API_ROUTER = routers.DefaultRouter()
 
@@ -17,5 +18,5 @@ API_ROUTER.register(r'ledgers', LedgerViewSet)
 class LedgerEntryViewSet(viewsets.ModelViewSet):
     queryset = LedgerEntry.objects.all()
     serializer_class = serializers.LedgerEntrySerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsLedgerOwnerOrReadOnly]
 API_ROUTER.register(r'entries', LedgerEntryViewSet)
