@@ -26,19 +26,35 @@ that the code works as intended and any data validation logic is robust.
 
 Getting Setup
 =============
+
+This guide is written primarily for OSX users.
+
+Prequisite Software
+-------------------
+
 * [boot2docker](http://boot2docker.io/)
 * [docker-compose](http://docs.docker.com/compose/install/)
 
-Getting a running local server should be pretty easy at this point
+Bootstrapping
+-------------
+
+* Run `boot2docker up` and copy the export commands it prints (you can print these commands again by running
+  `boot2docker shellinit`).
+* Connect `docker-compose` to the new VM by running the export commands from `boot2docker` in the terminal tab you want
+  to use.
 * `docker-compose up` should start a postgres server a django
   developement server (via `manage.py runserver 0.0.0.0:8000`) and an
   ember server.
-* `docker-compose run web manage.py syncdb` will get your DB setup
+
+Common Tasks
+------------
+
+* `docker-compose run backend manage.py migrate` will get your DB setup.
 * `boot2docker ip` will tell you what to connect to. (probably something
   like 192.168.59.103 or .104)
-* In a brower go to that IP with :8080 (just like you would for a
-  manage.py runserver if you ran it on your localhost) and you should
-  see the site!
-
-Note this does not do any `manage.py migrate` or `manage.py syncdb`
-runs, so you'll need to do that via `docker-compose run backend [COMMAND]`
+  * To reach the frontend, enter that IP with :8080 in a browser.
+  * To reach the backend (Django), enter that IP with :8000 in a browser.
+* `docker-compose run backend py.test` will run the tests locally. [Travis](https://travis-ci.org) runs the full set of
+  tests and static analysis tools (see travis.yaml), but it can be handy to run the Python tests before pushing.
+* `docker-compose stop; boot2docker down` will stop the platform without deleting the VMs, which means the next
+  start will be fast.
