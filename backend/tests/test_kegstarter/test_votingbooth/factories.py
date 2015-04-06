@@ -13,6 +13,8 @@ class PollFactory(factory.django.DjangoModelFactory):
 
     @factory.post_generation
     def kegs_available(self, create, extracted, **kwargs):
+        if create:
+            self.kegs_available.add(KegFactory())
         if extracted:
             self.kegs_available.add(*extracted)
 
@@ -30,6 +32,6 @@ class VoteFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = 'votingbooth.Vote'
 
-    keg = factory.SubFactory(KegFactory)
+    keg = factory.LazyAttribute(lambda o: o.poll.kegs_available.all()[0])
     poll = factory.SubFactory(PollFactory)
     user = factory.SubFactory(UserFactory)
